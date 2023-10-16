@@ -24,22 +24,85 @@
   };
 
   const headerItems = (
-    <div className="header">
+    <div className="header" key="header">
       <Header
         logoImg="data:image/png;base64,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"
         phone={88007707999} location="Moscow"/>
     </div>
   );
 
-  const Footer = () => {
+  const Footer = ({feedback, copyright}) => {
+    return (
+      <div className="footer-inner">
+        <span className="feed-back">{feedback}</span>
+        <span className="copyroght">{copyright}</span>
+      </div>
+    );
   };
-  const Sidebar = () => {
+
+  const footerItems = (
+    <div className="footer" key="footer">
+      <Footer
+        feedBack="Нашли ошибку на сайте? Выделите текст с ошибкой, нажмите Ctrl+Enter и напишите нам"
+        copyright="© 2002–2023 Компания DNS. Администрация Сайта не несет ответственности за размещаемые
+      Пользователями материалы (в т.ч. информацию и изображения), их содержание и качество."/>
+    </div>
+  );
+
+  const Sidebar = ({blockTitle, categories}) => {
+    return (
+      <div className="sidebar-container">
+        <h3 className="sidebar-title">{blockTitle}</h3>
+        <ul className="category-list">
+          {categories.map((category, index) =>
+            <li className="category-item" key={index}>{category}</li>
+          )}
+        </ul>
+      </div>
+    );
   };
-  const Content = () => {
+
+  const sidebarItems = (
+    <div className="sidebar" key="sidebar">
+      <Sidebar
+        blockTitle="Catalog" categories={['Graphic card', 'Processor', 'Hard Driver', 'Display', 'Mouse', 'Keyboard']}/>
+    </div>
+  )
+
+  const Content = ({modelName, dateRealese, imgModel}) => {
+    return (
+      <a href="#" className="pcItem">
+        <img src={imgModel} alt={"model" + modelName}/>
+        <span className="titleCard">{modelName}</span>
+        <span className="dateReleaseCard">{dateRealese}</span>
+      </a>
+    );
+  };
+
+  const contentItems = (
+    <div className="content" key="content">
+      <Content modelName="Intel i5 12400" dateRelease="12.06.2022" imgModel="https://c.dns-shop.ru/thumb/st4/fit/500/500/41c0678f76a1b36e262b5b016216b186/200e4a08e74afcc3cf1d54d47b758cbbf14c71973a64009553347d2b234b5af4.jpg.webp"/>
+      <Content modelName="GeForce RTX 3070ti" dateRelease="12.01.2022" imgModel="https://c.dns-shop.ru/thumb/st4/fit/500/500/df2d63b0a3eb742cc3d2c1b255bb3261/37585d7b247cfba52f5afd018647e578f28c2e27430df1e0240a5267ae0a1ec4.jpg.webp"/>
+      <Content modelName="beyerdynamic dt 770 pro" dateRealese="01.01.2015" imgModel="https://img5.lalafo.com/i/posters/original/50/f5/f93efc8c73c0a074974be8ff4ddd.jpeg"/>
+      <Content modelName="Memory DDR5" dateRealese="30.02.23" imgModel="https://c.dns-shop.ru/thumb/st4/fit/500/500/5f5f3343f0535897bc3465ab536bfd61/44f504cf9cf8ee098650eba974a9a52e54d02d6f6c28afea6ee36dc6c1b3c19f.jpg.webp"/>
+    </div>
+  )
+
+  const App = () => {
+    return (
+      <div>
+        {headerItems}
+        <div id="app-content" className="main-content">
+          {sidebarItems}
+          {contentItems}
+        </div>
+        {footerItems}
+      </div>
+    );
   };
 
   const container = document.getElementById('app');
-  ReactDOM.createRoot(container).render(headerItems)
+  ReactDOM.createRoot(container).render(<App/>);
 </script>
 </body>
 </html>
